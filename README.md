@@ -58,3 +58,6 @@ state, remaining = CD.isOnCooldown(cd_id)
 print(state, remaining)
 
 ```
+# Support
+
+- https://discord.gg/ccMArCwrPV
