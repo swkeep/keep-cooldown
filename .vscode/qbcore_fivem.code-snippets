@@ -1,0 +1,46 @@
+{
+  "cooldownObject": {
+    "scope": "lua",
+    "prefix": "cooldownObject",
+    "body": ["local CD = exports['keep-cooldown']:CD()"],
+    "description": "calls cooldown exports"
+  },
+  "cooldownAdd": {
+    "scope": "lua",
+    "prefix": "cooldownAdd",
+    "body": [
+      "CD.add(",
+      "\t{",
+      "\tid = '${1:id}',",
+      "\tcooldownLength = ${2:Length},",
+      "\tcType = '${3:temporary/persistent}'",
+      "\t}",
+      ")"
+    ],
+    "description": "makes a new cooldown"
+  },
+  "cooldownRemove": {
+    "scope": "lua",
+    "prefix": "cooldownRemove",
+    "body": ["CD.remove(${1:id})"],
+    "description": "removes a active cooldown from runtime"
+  },
+  "isOnCooldown": {
+    "scope": "lua",
+    "prefix": "isOnCooldown",
+    "body": ["CD.isOnCooldown(${1:id})"],
+    "description": "returns cooldown state and remaining time"
+  },
+  "setOnCooldown": {
+    "scope": "lua",
+    "prefix": "setOnCooldown",
+    "body": ["CD.setOnCooldown(${1:id})"],
+    "description": "sets cooldown on cooldown :)"
+  },
+  "resetCooldownUsage": {
+    "scope": "lua",
+    "prefix": "resetCooldownUsage",
+    "body": ["CD.resetCooldownUsage(${1:id})"],
+    "description": "sets cooldown usage to 0"
+  }
+}
