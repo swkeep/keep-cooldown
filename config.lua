@@ -1,7 +1,7 @@
 Config = Config or {}
 
--- user-client-persistent
--- user-server-persistent
-
--- user-client-temporary
--- user-server-temporary
+-- trigger event
+Config.StateChange = {
+     Server_side = true,
+     Client_side = true
+}

@@ -111,6 +111,12 @@ function COOLDOWN:setOnCooldown(ID)
           self.cooldowns[ID].isOnCooldown = true
           self.cooldowns[ID].timer = self.cooldowns[ID].cooldownLength
           self.cooldowns[ID].usageCounter = self.cooldowns[ID].usageCounter + 1
+          if Config.StateChange.Client_side then
+               TriggerClientEvent('keep-cooldown:client:cooldownStateChange', -1, self.cooldowns[ID].isOnCooldown, ID)
+          end
+          if Config.StateChange.Server_side then
+               TriggerEvent('keep-cooldown:server:cooldownStateChange', self.cooldowns[ID].isOnCooldown, ID)
+          end
           return true
      end
      return false
@@ -165,7 +171,7 @@ end
 --   functions
 --------------------------
 
-local function Cooldown_logic(DATA)
+local function Cooldown_logic(DATA, ID)
      if DATA.timer == nil then DATA.timer = 0 return end
      if DATA.timer > 0 then
           DATA.timer = DATA.timer - 1
@@ -178,6 +184,12 @@ local function Cooldown_logic(DATA)
           return
      elseif DATA.timer == 0 and DATA.isOnCooldown == true then
           DATA.isOnCooldown = false
+          if Config.StateChange.Client_side then
+               TriggerClientEvent('keep-cooldown:client:cooldownStateChange', -1, DATA.isOnCooldown, ID)
+          end
+          if Config.StateChange.Server_side then
+               TriggerEvent('keep-cooldown:server:cooldownStateChange', DATA.isOnCooldown, ID)
+          end
           return
      end
 end
@@ -192,7 +204,7 @@ Citizen.CreateThread(function()
      WaitUntilLoaded()
      while true do
           for ID, DATA in pairs(COOLDOWN:listAll()) do
-               Cooldown_logic(DATA)
+               Cooldown_logic(DATA, ID)
           end
           Wait(1000)
      end
