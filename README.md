@@ -3,6 +3,15 @@
 - A small fivem resource to make server-side cooldowns
 - check wiki for more information
 
+# installation
+* insert sql.sql into your database 
+* copy files
+* ensure keep-cooldown
+* done
+
+# Dependencies
+* oxmysql
+
 # example
 
 ```lua
@@ -58,3 +67,6 @@ state, remaining = CD.isOnCooldown(cd_id)
 print(state, remaining)
 
 ```
+# Support
+
+- https://discord.gg/ccMArCwrPV
