@@ -3,6 +3,10 @@
 - A small fivem resource to make server-side cooldowns
 - check wiki for more information
 
+# Guide
+[Youtube video](https://www.youtube.com/watch?v=dcSL9MUXh5Q)
+
+
 # installation
 * insert sql.sql into your database 
 * copy files
